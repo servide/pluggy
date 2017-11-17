@@ -45,20 +45,20 @@ public class ExamplePlugin extends PluggyPlugin
 Now you will have these methods available to you
 
 ```java
-	@Override
-	public void enable()
-	{
-	}
+@Override
+public void enable()
+{
+}
 
-	@Override
-	public void disable()
-	{
-	}
+@Override
+public void disable()
+{
+}
 
-	@Override
-	public void configure(Binder binder)
-	{
-	}
+@Override
+public void configure(Binder binder)
+{
+}
 ```
 
 You can use `binder` in the configure method body to perform regular guice usage
@@ -68,11 +68,11 @@ Read [`Guide to Google Guice`](http://www.baeldung.com/guice), if you are still 
 To install a module simply 
 
 ```java
-	@Override
-	public void enable()
-	{
-	    install(ExampleModule.class);
-	}
+@Override
+public void enable()
+{
+    install(ExampleModule.class);
+}
 ```
 
 'ExampleModule' looks something like so
