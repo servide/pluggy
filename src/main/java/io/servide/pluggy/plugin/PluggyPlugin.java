@@ -19,6 +19,7 @@ import io.servide.common.inject.module.Modular;
 import io.servide.pluggy.config.ModuleConfig;
 import io.servide.pluggy.config.auto.ConfigDiscovery;
 import io.servide.pluggy.module.PluggyModule;
+import io.servide.pluggy.module.PluginModule;
 
 public abstract class PluggyPlugin extends JavaPlugin implements Modular {
 
@@ -27,7 +28,7 @@ public abstract class PluggyPlugin extends JavaPlugin implements Modular {
 	private ModuleConfig moduleConfig = this.findModuleConfig(this.moduleConfigFile);
 	private Injector injector;
 	@Inject
-	private PluggyModule module;
+	private PluginModule module;
 
 	public static Injector getInjector()
 	{

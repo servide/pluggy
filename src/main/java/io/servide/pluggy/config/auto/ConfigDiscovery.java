@@ -6,6 +6,7 @@ import com.google.inject.Binder;
 
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import io.servide.pluggy.config.SimpleConfig;
+import io.servide.pluggy.plugin.PluggyPlugin;
 
 public enum ConfigDiscovery {
 
@@ -20,7 +21,7 @@ public enum ConfigDiscovery {
 	public static void saveAll(Plugin plugin)
 	{
 		ConfigDiscovery.scan(plugin).matchClassesWithAnnotation(Config.class,
-				aClass -> SimpleConfig.save(plugin.getDataFolder(), aClass)).scan();
+				aClass -> SimpleConfig.save(plugin.getDataFolder(), PluggyPlugin.getInjector().getInstance(aClass))).scan();
 	}
 
 	private static FastClasspathScanner scan(Plugin plugin)
