@@ -92,3 +92,72 @@ public class ExampleModule extends PluggyModule {
 
 }
 ```
+
+## Auto Configs
+
+We have introduced a simple way to manage you configs
+
+This uses [`Jackson`](https://github.com/FasterXML/jackson) and therefor supports complex pojos
+
+For a [`Jackson Guide`](http://www.baeldung.com/jackson-object-mapper-tutorial) and [`Jackson Annotations`](http://www.baeldung.com/jackson-annotations)
+
+First create a config POJO, in this case our's is very basic
+
+Make sure to add the '@config' or the config will not be discovered
+
+```java
+@Config
+public class ExampleConfig {
+
+	private String superSecret= "test";
+
+        //getters and setters.....
+
+}
+```
+
+To use this config in any module or plugin use
+
+```java
+@Inject
+ExampleConfig config;
+```
+
+For a more concrete example
+
+```java
+public class ExampleModule extends PluggyModule {
+
+	@Inject
+	@PluginLogger
+	Logger logger;
+
+	@Inject
+	ExampleConfig config;
+
+	@Override
+	public void enable()
+	{
+		logger.info(config.getSuperSecret());
+	}
+
+}
+```
+
+Note if we do 'config.setSuperSecret("notSoSecret")'
+
+That change will be saved to the file system for you
+
+For an immutable config use
+
+```java
+@Config
+public class ExampleConfig {
+
+        //"test" is the default value but will be overridden if a value is found in the yml file
+	private final String superSecret= "test";
+
+        //getters.....
+
+}
+```
