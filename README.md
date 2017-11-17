@@ -144,7 +144,7 @@ public class ExampleModule extends PluggyModule {
 }
 ```
 
-Note if we do 'config.setSuperSecret("notSoSecret")'
+Note if we do `config.setSuperSecret("notSoSecret")`
 
 That change will be saved to the file system for you
 
