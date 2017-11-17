@@ -1,0 +1,4 @@
+ name: ExamplePlugin
+ version: 1.0
+ main: io.servide.pluggy.example.ExamplePlugin
+ load: STARTUP

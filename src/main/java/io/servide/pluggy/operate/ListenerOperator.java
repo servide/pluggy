@@ -1,4 +1,4 @@
-package io.servide.pluggy.inject.operate;
+package io.servide.pluggy.operate;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;

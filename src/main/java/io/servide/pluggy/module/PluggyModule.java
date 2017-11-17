@@ -1,4 +1,4 @@
-package io.servide.pluggy.inject.module;
+package io.servide.pluggy.module;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +10,10 @@ import io.servide.common.inject.module.Enableable;
 import io.servide.common.inject.module.Modular;
 import io.servide.common.inject.operate.OperatorRegistry;
 import io.servide.common.name.Names;
-import io.servide.pluggy.inject.plugin.PluggyPlugin;
-import io.servide.pluggy.inject.plugin.PluginLogger;
+import io.servide.pluggy.plugin.PluggyPlugin;
+import io.servide.pluggy.plugin.PluginLogger;
 
-public abstract class Module implements Modular {
+public abstract class PluggyModule implements Modular {
 
 	private final List<Modular> children = new ArrayList<>();
 	private final List<Object> installations = new ArrayList<>();
@@ -36,11 +36,11 @@ public abstract class Module implements Modular {
 		{
 			this.children.add((Modular) instance);
 
-			if (instance instanceof Module)
+			if (instance instanceof PluggyModule)
 			{
-				Module module = (Module) instance;
-				module.parent = this;
-				enabled = module.enabled;
+				PluggyModule pluggyModule = (PluggyModule) instance;
+				pluggyModule.parent = this;
+				enabled = pluggyModule.enabled;
 			}
 		}
 		else
@@ -103,5 +103,6 @@ public abstract class Module implements Modular {
 		this.enabled = PluggyPlugin.isModuleEnabled(this);
 		this.children.forEach(Modular::discoverIfIsEnabled);
 	}
+
 
 }

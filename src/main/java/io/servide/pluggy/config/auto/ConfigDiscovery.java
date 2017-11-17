@@ -17,6 +17,12 @@ public enum ConfigDiscovery {
 				aClass -> SimpleConfig.bind(binder, plugin.getDataFolder(), aClass)).scan();
 	}
 
+	public static void saveAll(Plugin plugin)
+	{
+		ConfigDiscovery.scan(plugin).matchClassesWithAnnotation(Config.class,
+				aClass -> SimpleConfig.save(plugin.getDataFolder(), aClass)).scan();
+	}
+
 	private static FastClasspathScanner scan(Plugin plugin)
 	{
 		return new FastClasspathScanner(

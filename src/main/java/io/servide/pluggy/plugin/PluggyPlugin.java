@@ -1,4 +1,4 @@
-package io.servide.pluggy.inject.plugin;
+package io.servide.pluggy.plugin;
 
 import java.io.File;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.google.common.base.Preconditions;
 import com.google.inject.Binder;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
@@ -16,8 +17,8 @@ import io.servide.common.except.Try;
 import io.servide.common.inject.discover.Discovery;
 import io.servide.common.inject.module.Modular;
 import io.servide.pluggy.config.ModuleConfig;
-import io.servide.pluggy.inject.module.Module;
-import io.servide.pluggy.inject.module.PluginModule;
+import io.servide.pluggy.config.auto.ConfigDiscovery;
+import io.servide.pluggy.module.PluggyModule;
 
 public abstract class PluggyPlugin extends JavaPlugin implements Modular {
 
@@ -26,17 +27,17 @@ public abstract class PluggyPlugin extends JavaPlugin implements Modular {
 	private ModuleConfig moduleConfig = this.findModuleConfig(this.moduleConfigFile);
 	private Injector injector;
 	@Inject
-	private PluginModule module;
+	private PluggyModule module;
 
 	public static Injector getInjector()
 	{
 		return JavaPlugin.getPlugin(PluggyPlugin.class).injector;
 	}
 
-	public static boolean isModuleEnabled(Module module)
+	public static boolean isModuleEnabled(PluggyModule pluggyModule)
 	{
 		return ConfigModules
-				.isModuleEnabled(module, JavaPlugin.getPlugin(PluggyPlugin.class).moduleConfig);
+				.isModuleEnabled(pluggyModule, JavaPlugin.getPlugin(PluggyPlugin.class).moduleConfig);
 	}
 
 	@Override
@@ -56,10 +57,11 @@ public abstract class PluggyPlugin extends JavaPlugin implements Modular {
 	@Override
 	public final void onDisable()
 	{
+		ConfigDiscovery.saveAll(this);
 		this.disable();
 	}
 
-	private void configure(Binder binder)
+	public void configure(Binder binder)
 	{
 	}
 
@@ -76,6 +78,7 @@ public abstract class PluggyPlugin extends JavaPlugin implements Modular {
 	@Override
 	public final void install(Class<?> type)
 	{
+		Preconditions.checkNotNull(type);
 		this.module.install(type);
 	}
 
@@ -122,6 +125,7 @@ public abstract class PluggyPlugin extends JavaPlugin implements Modular {
 
 		if (!file.exists())
 		{
+			file.getParentFile().mkdirs();
 			Try.to(file::createNewFile);
 		}
 
@@ -137,5 +141,6 @@ public abstract class PluggyPlugin extends JavaPlugin implements Modular {
 
 		return Configs.unwrapUsingYaml(file, ModuleConfig.class);
 	}
+
 
 }

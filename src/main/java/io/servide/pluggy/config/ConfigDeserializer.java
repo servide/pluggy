@@ -11,12 +11,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.google.common.collect.Streams;
 
-import io.servide.common.name.Names;
-import io.servide.pluggy.inject.module.PluginModule;
-
 class ConfigDeserializer extends StdDeserializer<ModuleConfig> {
 
-	private static final String ROOT_NAME = Names.getName(PluginModule.class);
+	private static final String ROOT_NAME = "plugin";
 
 	protected ConfigDeserializer()
 	{

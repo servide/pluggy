@@ -1,4 +1,4 @@
-package io.servide.pluggy.inject.plugin;
+package io.servide.pluggy.plugin;
 
 import java.io.File;
 import java.util.logging.Logger;

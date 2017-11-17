@@ -1,11 +1,11 @@
-package io.servide.pluggy.inject.module;
+package io.servide.pluggy.module;
 
 import java.util.logging.Logger;
 
 import com.google.inject.Inject;
 
 import io.servide.common.inject.module.Enableable;
-import io.servide.pluggy.inject.plugin.PluginLogger;
+import io.servide.pluggy.plugin.PluginLogger;
 
 public class Feature implements Enableable {
 

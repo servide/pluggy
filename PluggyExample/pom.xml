@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.servide</groupId>
-    <artifactId>pluggy</artifactId>
+    <artifactId>pluggy-example</artifactId>
     <version>1.0</version>
+
 
     <build>
         <defaultGoal>clean install</defaultGoal>
@@ -44,15 +45,8 @@
     <dependencies>
         <dependency>
             <groupId>io.servide</groupId>
-            <artifactId>commons</artifactId>
-            <version>0.0.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.servide</groupId>
-            <artifactId>commons-spigot</artifactId>
-            <version>0.0.1</version>
-            <scope>compile</scope>
+            <artifactId>pluggy</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -73,18 +67,5 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
     </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>servide-releases</name>
-            <url>http://maven.servide.io/artifactory/servide-release</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>servide-snapshots</name>
-            <url>http://maven.servide.io/artifactory/servide-snapshot</url>
-        </snapshotRepository>
-    </distributionManagement>
 
 </project>
