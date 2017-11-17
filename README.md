@@ -4,7 +4,7 @@ Google Guice for spigot
 
 To learn more about [`Google's Guice`](https://github.com/google/guice)
 
-For the [`Motivation`](https://github.com/google/guice/wiki/Motivation)behind this project
+For the [`Motivation`](https://github.com/google/guice/wiki/Motivation) behind this project
 
 ## Maven
 
