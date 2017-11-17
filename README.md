@@ -19,7 +19,7 @@ For the [`Motivation`](https://github.com/google/guice/wiki/Motivation)behind th
 <dependency>
     <groupId>io.servide</groupId>
     <artifactId>pluggy</artifactId>
-    <version>1.0-20171117.022138-1</version>
+    <version>1.0</version>
 </dependency>
 ```
 
