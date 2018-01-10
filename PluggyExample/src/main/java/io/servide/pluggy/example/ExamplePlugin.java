@@ -1,23 +1,24 @@
 package io.servide.pluggy.example;
 
+import com.google.inject.Inject;
+import io.servide.pluggy.Plugger;
+import io.servide.pluggy.PluginLogger;
 import java.util.logging.Logger;
 
-import com.google.inject.Inject;
+public class ExamplePlugin extends Plugger {
 
-import io.servide.pluggy.plugin.PluggyPlugin;
-import io.servide.pluggy.plugin.PluginLogger;
+  @Inject
+  @PluginLogger
+  private Logger pluginLogger;
 
-public class ExamplePlugin extends PluggyPlugin {
+  @Override
+  public void enable() {
+    this.pluginLogger.info("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Loaded");
+  }
 
-	@Inject
-	@PluginLogger
-	Logger logger;
+  @Override
+  public void disable() {
 
-	@Override
-	public void enable()
-	{
-		logger.info("ExamplePlugin loaded!");
-		install(ExampleModule.class);
-	}
+  }
 
 }
