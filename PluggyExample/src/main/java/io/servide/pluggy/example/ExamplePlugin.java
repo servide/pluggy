@@ -1,8 +1,8 @@
 package io.servide.pluggy.example;
 
 import com.google.inject.Inject;
-import io.servide.pluggy.Plugger;
-import io.servide.pluggy.PluginLogger;
+import io.servide.pluggy.plugin.Plugger;
+import io.servide.pluggy.plugin.PluginLogger;
 import java.util.logging.Logger;
 
 public class ExamplePlugin extends Plugger {
@@ -13,7 +13,7 @@ public class ExamplePlugin extends Plugger {
 
   @Override
   public void enable() {
-    this.pluginLogger.info("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Loaded");
+    this.pluginLogger.info("I just used pluggy!");
   }
 
   @Override

@@ -1,4 +1,4 @@
-package io.servide.pluggy;
+package io.servide.pluggy.plugin;
 
 import com.google.inject.BindingAnnotation;
 import java.lang.annotation.ElementType;
