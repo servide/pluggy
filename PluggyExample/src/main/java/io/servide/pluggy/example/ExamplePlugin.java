@@ -11,9 +11,13 @@ public class ExamplePlugin extends Plugger {
   @PluginLogger
   private Logger pluginLogger;
 
+  @Inject
+  ExampleConfig exampleConfig;
+
   @Override
   public void enable() {
     this.pluginLogger.info("I just used pluggy!");
+    this.pluginLogger.info("Pluggy Config = " + exampleConfig.getTest());
   }
 
   @Override
