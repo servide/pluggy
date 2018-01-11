@@ -30,6 +30,7 @@ public class ConfigScanner {
       fileName = aClass.getSimpleName() + ".yml";
     }
     SimpleConfig.bind(this.binder, new File(this.plugger.getDataFolder(), fileName), aClass);
+    this.plugger.getLogger().info("Loaded " + aClass.getSimpleName() + " from " + fileName);
   }
 
 }
