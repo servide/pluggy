@@ -27,4 +27,8 @@ public abstract class Plugger extends JavaPlugin implements Module {
   public void configure(Binder binder) {
   }
 
+  public Injector getInjector() {
+    return this.injector;
+  }
+
 }
