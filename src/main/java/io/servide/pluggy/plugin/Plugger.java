@@ -4,11 +4,14 @@ import com.google.inject.Binder;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
+import java.util.ArrayList;
+import java.util.List;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public abstract class Plugger extends JavaPlugin implements Module {
 
   private Injector injector;
+  private final List<Module> modules = new ArrayList<>();
 
   public abstract void enable();
 
@@ -17,6 +20,7 @@ public abstract class Plugger extends JavaPlugin implements Module {
   public void onEnable() {
     this.injector = Guice.createInjector(new PluginInjector(this));
     this.injector.injectMembers(this);
+    this.modules.forEach(this.injector::injectMembers);
     this.enable();
   }
 
@@ -29,6 +33,11 @@ public abstract class Plugger extends JavaPlugin implements Module {
 
   public Injector getInjector() {
     return this.injector;
+  }
+
+  public void install(Module module) {
+    this.install(module);
+    this.modules.add(module);
   }
 
 }
