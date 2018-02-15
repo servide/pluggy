@@ -35,8 +35,8 @@ public abstract class Plugger extends JavaPlugin implements Module {
     return this.injector;
   }
 
-  public void install(Module module) {
-    this.install(module);
+  public void install(Binder binder, Module module) {
+    binder.install(module);
     this.modules.add(module);
   }
 
